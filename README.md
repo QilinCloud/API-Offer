@@ -12,8 +12,8 @@ The offer describes the details at which a merchant wants to offer a product on 
 
 * [Documentation](https://documentation.api.qilin.cloud/offer/)
 * [Schema](https://documentation.api.qilin.cloud/openapi/offer/tag/schema/)
-* [OpenAPI Specification](https://github.com/QilinCloud/API-Offer/blob/main/openapi.yaml)
-* [Postman Collection](https://github.com/QilinCloud/API-Offer/blob/main/postman_collection.json)
+* [OpenAPI Specification](https://github.com/QilinCloud/API-Offer/blob/main/openapi-offer.yaml)
+* [Postman Collection](https://github.com/QilinCloud/API-Offer/blob/main/postman_collection-offer.json)
 * [SDKs](https://github.com/search?q=user%3AQilinCloud+SDK)
 
 
