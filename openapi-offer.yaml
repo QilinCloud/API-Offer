@@ -1,0 +1,1913 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI Document on Azure Functions
+  description: |
+    This is the OpenAPI Document on Azure Functions
+
+    # Authentication
+
+    Qilin offers two forms of authentication:
+      - bearer
+      - api_key
+
+    bearer - an open protocol to allow secure authorization in a simple
+    and standard method from web, mobile and desktop applications.
+
+    <SecurityDefinitions />
+  version: 1.0.0
+  license:
+    name: Qilin
+    url: Qilin.com
+servers:
+  - url: https://apimgmt-qilin-dev.azure-api.net/test/api
+paths:
+  /offers:
+    post:
+      tags:
+        - Offer
+      summary: Create a offer item
+      operationId: CreateOffer
+      requestBody:
+        description: Offer Data Model
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/offerDto'
+        required: true
+      responses:
+        '200':
+          description: Successful response with created object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successResponse_offerDetailDto'
+        '400':
+          description: Bad request response with detail of errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badRequestExceptionModel'
+        '500':
+          description: Server error response
+          content:
+            application/json:
+              schema:
+                type: string
+      x-ms-visibility: important
+    get:
+      tags:
+        - Offer
+      summary: Get list of Offer
+      operationId: GetOffers
+      parameters:
+        - name: pageIndex
+          in: query
+          description: The index of the page
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          description: Total items per page
+          schema:
+            type: integer
+            format: int32
+        - name: channelId
+          in: query
+          description: Channel ID
+          schema:
+            type: string
+            format: uuid
+        - name: productId
+          in: query
+          description: Product ID
+          schema:
+            type: string
+            format: uuid
+        - name: creationDateFrom
+          in: query
+          description: Creation date from
+          schema:
+            type: string
+            format: date-time
+        - name: creationDateTo
+          in: query
+          description: Creation date to
+          schema:
+            type: string
+            format: date-time
+        - name: updatedDateFrom
+          in: query
+          description: Last update date from
+          schema:
+            type: string
+            format: date-time
+        - name: updatedDateTo
+          in: query
+          description: Last update date to
+          schema:
+            type: string
+            format: date-time
+        - name: orderBy
+          in: query
+          description: Order by field
+          schema:
+            type: string
+        - name: orderType
+          in: query
+          description: Order by type
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with list of filtered offer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successResponse_offerDetailDto[]'
+        '400':
+          description: Bad request response with detail of errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badRequestExceptionModel'
+        '500':
+          description: Server error response
+          content:
+            application/json:
+              schema:
+                type: string
+  /offers/{id}:
+    delete:
+      tags:
+        - Offer
+      summary: Delete a offer item
+      operationId: DeleteOfferById
+      parameters:
+        - name: id
+          in: path
+          description: The **Id** parameter
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Delete successfully message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successResponse_object'
+        '400':
+          description: Bad request response with detail of errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badRequestExceptionModel'
+        '500':
+          description: Server error response
+          content:
+            application/json:
+              schema:
+                type: string
+      x-ms-visibility: important
+    get:
+      tags:
+        - Offer
+      summary: Get a offer by id
+      operationId: GetOfferById
+      parameters:
+        - name: id
+          in: path
+          description: The **UUID** parameter
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The Offer detail by Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successResponse_offerDetailDto'
+        '400':
+          description: Bad request response with detail of errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badRequestExceptionModel'
+        '500':
+          description: Server error response
+          content:
+            application/json:
+              schema:
+                type: string
+      x-ms-visibility: important
+    head:
+      tags:
+        - Offer
+      summary: Get basic info of an offer
+      operationId: HeadBasicInfoOffer
+      parameters:
+        - name: id
+          in: path
+          description: The offer identity
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with created object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successResponse_headBasicInfoOfferDto'
+        '400':
+          description: Bad request response with detail of errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badRequestExceptionModel'
+        '500':
+          description: Server error response
+          content:
+            application/json:
+              schema:
+                type: string
+  /warehouses:
+    post:
+      tags:
+        - Warehouse
+      summary: Create a warehouse item
+      operationId: CreateWarehouse
+      requestBody:
+        description: Warehouse Data Model
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/warehouseDto'
+        required: true
+      responses:
+        '200':
+          description: Successful response with created object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successResponse_warehouseDetailDto'
+        '400':
+          description: Bad request response with detail of errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badRequestExceptionModel'
+        '500':
+          description: Server error response
+          content:
+            application/json:
+              schema:
+                type: string
+      x-ms-visibility: important
+    get:
+      tags:
+        - Warehouse
+      summary: Get list of warehouse
+      operationId: GetWarehouseList
+      parameters:
+        - name: pageIndex
+          in: query
+          description: The index of the page
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          description: Total items of per page
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: orderBy
+          in: query
+          description: Order by field
+          required: true
+          schema:
+            type: string
+        - name: orderType
+          in: query
+          description: Order by type
+          required: true
+          schema:
+            type: string
+        - name: Accept-Language
+          in: header
+          description: Language
+          required: true
+          schema:
+            type: string
+        - name: CountryCode
+          in: query
+          description: Country of warehouse address
+          schema:
+            type: string
+        - name: state
+          in: query
+          description: State of warehouse address
+          schema:
+            type: string
+        - name: city
+          in: query
+          description: City of warehouse address
+          schema:
+            type: string
+        - name: IsExternalFulfillment
+          in: query
+          description: Warehouse is external fullfillment center
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: The warehouse list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successResponse_warehouseDetailDto[]'
+        '400':
+          description: Bad request response with detail of errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badRequestExceptionModel'
+        '500':
+          description: Server error response
+          content:
+            application/json:
+              schema:
+                type: string
+  /warehouses/{id}:
+    delete:
+      tags:
+        - Warehouse
+      summary: Delete a warehouse item
+      operationId: DeleteWarehouseById
+      parameters:
+        - name: id
+          in: path
+          description: The **Id** parameter
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Delete successfully message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successResponse_object'
+        '400':
+          description: Bad request response with detail of errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badRequestExceptionModel'
+        '500':
+          description: Server error response
+          content:
+            application/json:
+              schema:
+                type: string
+      x-ms-visibility: important
+    get:
+      tags:
+        - Warehouse
+      summary: Get a warehouse by UUID
+      operationId: GetWarehouseById
+      parameters:
+        - name: id
+          in: path
+          description: The **UUID** parameter
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The Warehouse detail by Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successResponse_warehouseDetailDto'
+        '400':
+          description: Bad request response with detail of errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badRequestExceptionModel'
+        '500':
+          description: Server error response
+          content:
+            application/json:
+              schema:
+                type: string
+      x-ms-visibility: important
+    put:
+      tags:
+        - Warehouse
+      summary: Update a warehouse item
+      operationId: UpdateWarehouse
+      parameters:
+        - name: id
+          in: path
+          description: The **Id** parameter
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Warehouse Data Model
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/warehouseDto'
+        required: true
+      responses:
+        '200':
+          description: Successful response with updated object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successResponse_warehouseDetailDto'
+        '400':
+          description: Bad request response with detail of errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badRequestExceptionModel'
+        '500':
+          description: Server error response
+          content:
+            application/json:
+              schema:
+                type: string
+      x-ms-visibility: important
+  /offers/{offerId}:
+    patch:
+      tags:
+        - Offer
+      summary: Delta update an offer
+      operationId: DeltaUpdateOffer
+      parameters:
+        - name: offerId
+          in: path
+          description: The **OfferId** parameter
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Delta Update Data Model
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/patchUpdateDto'
+        required: true
+      responses:
+        '200':
+          description: Payload of SuccessResponse containing OfferDetailDto
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successResponse_offerDetailDto'
+        '400':
+          description: Bad request response with detail of errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badRequestExceptionModel'
+        '500':
+          description: Server error response
+          content:
+            application/json:
+              schema:
+                type: string
+    put:
+      tags:
+        - Offer
+      summary: Update an offer
+      operationId: UpdateOffer
+      parameters:
+        - name: offerId
+          in: path
+          description: The **OfferId** parameter
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/offerDto'
+        required: true
+      responses:
+        '200':
+          description: Payload of SuccessResponse containing OfferDetailDto
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successResponse_offerDetailDto'
+        '400':
+          description: Bad request response with detail of errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/badRequestExceptionModel'
+        '500':
+          description: Server error response
+          content:
+            application/json:
+              schema:
+                type: string
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      description: |
+        Use this [link](https://qilindev.b2clogin.com/qilindev.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_SIGNIN_TEST&client_id=ef526441-11da-42c3-9219-93b8a8d4c953&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login) to login and get the JWT
+      scheme: bearer
+    api_key:
+      type: apiKey
+      in: header
+      name: x-api-key
+  schemas:
+    money:
+      type: object
+      properties:
+        amountInFractionalUnit:
+          type: integer
+          description: A value in the smallest unit of the currency. So for the currency euro then the value in cents, for the currency Swiss franc, then the value in centimes, etc.. Always net.
+          format: int32
+          example: 10
+        currency:
+          minLength: 1
+          type: string
+          description: The currency in ISO 4217 (Iso3) format.
+          example: USD
+      description: The moving average purchase price, net price
+      required:
+        - amountInFractionalUnit
+        - currency
+    stockInfo:
+      type: object
+      properties:
+        stock:
+          type: integer
+          description: The available stock in this warehouse
+          format: int32
+          nullable: true
+          example: 10
+        warehouseId:
+          type: string
+          description: The reference to a warehouse where this stock is managed (stored)
+          nullable: true
+          format: uuid
+        gld:
+          $ref: '#/components/schemas/money'
+        reservedStock:
+          type: number
+          description: The reserved stock
+          format: float
+          nullable: true
+          example: 3
+        inflowStock:
+          type: number
+          description: The stock that is currently in the supply
+          format: float
+          nullable: true
+          example: 3
+        transhippingRate:
+          type: number
+          description: The inventory turnover rate
+          format: float
+          nullable: true
+          example: 3
+      required:
+        - stock
+        - warehouseId
+    deliveryTime:
+      type: object
+      properties:
+        name:
+          type: object
+          additionalProperties:
+            type: string
+          description: The name for this delivery time
+          example:
+            en-US: Standard
+            vi-VN: Tiêu chuẩn
+        processingTimeFrom:
+          type: integer
+          description: The minimum duration in days that the retailer needs internally after receiving the order until he hands over the shipment to the carrier.
+          format: int32
+          nullable: true
+          example: 2
+        processingTimeTill:
+          type: integer
+          description: The maximum duration in days that the retailer needs internally after receiving the order until he hands over the shipment to the carrier.
+          format: int32
+          nullable: true
+          example: 10
+        shippingTimeFrom:
+          type: integer
+          description: The minimum duration in days that the Carrier needs for delivery (minimum duration between handover of the package to the Carrier and the first delivery attempt to the buyer).
+          format: int32
+          nullable: true
+          example: 2
+        shippingTimeTill:
+          type: integer
+          description: The maximum duration in days that the Carrier needs for delivery (maximum duration between handover of the package to the Carrier and the first delivery attempt to the buyer).
+          format: int32
+          nullable: true
+          example: 10
+        deliveryWeekdays:
+          type: array
+          items:
+            enum:
+              - 0
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+            type: integer
+            format: int32
+            example:
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+          description: |-
+            A list of days of the week on which the Carrier generally delivers.<br/>
+                                            Value:<br/>
+                                            0: Sunday<br/>
+                                            1: Monday<br/>
+                                            2: Tuesday<br/>
+                                            3: Wednesday<br/>
+                                            4: Thursday<br/>
+                                            5: Friday<br/>
+                                            6: Saturday
+          nullable: true
+        priceChange:
+          $ref: '#/components/schemas/money'
+      required:
+        - name
+        - processingTimeFrom
+        - processingTimeTill
+        - shippingTimeFrom
+        - shippingTimeTill
+    reducedPrice:
+      type: object
+      properties:
+        price:
+          $ref: '#/components/schemas/money'
+        startDate:
+          type: string
+          description: Date from when the special price is active
+          format: date
+          example: '2022-08-10'
+          nullable: true
+        endDate:
+          type: string
+          description: Date until when the special price is active
+          format: date
+          example: '2023-08-10'
+          nullable: true
+        tillStockLessOrEqual:
+          type: number
+          description: Up to which minimum stock the special price is active
+          format: float
+          example: 2
+          nullable: true
+      description: The special price
+      required:
+        - price
+    repricerInfo:
+      type: object
+      properties:
+        minimumPriceAbsolute:
+          $ref: '#/components/schemas/money'
+        minimumPricePercentual:
+          type: number
+          description: The requested minimum price, percentage of the regular price, net price
+          format: float
+          example: 2
+          nullable: true
+        maximumPriceAbsolute:
+          $ref: '#/components/schemas/money'
+        maximumPricePercentual:
+          type: number
+          description: The requested maximum price, percentage of the regular price, net price
+          format: float
+          example: 5
+          nullable: true
+        minimumProfitAbsolute:
+          $ref: '#/components/schemas/money'
+        minimumProfitPercentual:
+          type: number
+          description: The desired minimum margin, percentage on the median GLD of all StockInfos, net price
+          format: float
+          example: 2
+          nullable: true
+        maximumProfitAbsolute:
+          $ref: '#/components/schemas/money'
+        maximumProfitPercentual:
+          type: number
+          description: The desired maximum margin as a percentage of the median GLD of all StockInfos, net price
+          format: float
+          example: 5
+          nullable: true
+        desiredPosition:
+          type: integer
+          description: The desired positioning in the search results on this channel
+          format: int32
+          example: 3
+          nullable: true
+        desiredTranshippingRate:
+          type: number
+          description: The desired turnover rate
+          format: float
+          example: 3
+          nullable: true
+        calculationGroup:
+          type: string
+          description: A reference to a calculation group
+          format: uuid
+          nullable: true
+        returnRatePercentual:
+          type: number
+          description: The return rate in %
+          format: float
+          example: 3.4
+          nullable: true
+        returnCost:
+          $ref: '#/components/schemas/money'
+        additionalAfterSalesCost:
+          $ref: '#/components/schemas/money'
+        additionalPreSalesCost:
+          $ref: '#/components/schemas/money'
+      description: Information to be able to use a potential Repricer
+    channelOfferDetailDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The generated by Qilin when creating a new channel offer.
+          format: uuid
+        taxGroupText:
+          type: string
+          description: The tax group mapping with country
+          example: Normal
+        updatedDate:
+          type: string
+          description: The latest update time of this channel offer.
+          format: date-time
+          example: '2022-08-24T14:15:22Z'
+        channelId:
+          type: string
+          description: Reference to the ID of the channel for which this offer should apply. ChannelID = 0 means "general" and is always used as fallback if a channel has no specific ChannelOffer information.
+          format: uuid
+        isActive:
+          type: boolean
+          description: Indicates whether the offer is currently active for this channel.
+        price:
+          $ref: '#/components/schemas/money'
+        taxGroup:
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+          type: integer
+          description: |-
+            The tax group mapping with country<br/>
+                                            Value:<br/>
+                                            0: Normal<br/>
+                                            1: Reduced<br/>
+                                            2: Taxfree<br/>
+                                            3: Regular<br/>
+                                            4: Unknown
+          format: int32
+          example: 0
+        stocks:
+          type: array
+          items:
+            $ref: '#/components/schemas/stockInfo'
+          description: The available stock
+        defaultDeliveryTime:
+          $ref: '#/components/schemas/deliveryTime'
+        condition:
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+            - 13
+          type: integer
+          description: |-
+            The condition of a product.<br/>
+                                            Value:<br/>
+                                            0 : New<br/>
+                                            1 : AsNew<br/>
+                                            2 : VeryGood<br/>
+                                            3 : Good<br/>
+                                            4 : Acceptable<br/>
+                                            5 : Antique<br/>
+                                            6 : Broken<br/>
+                                            7 : Refurbished<br/>
+                                            8 : BStock<br/>
+                                            9 : DamagedPackaging<br/>
+                                            10 : Demo<br/>
+                                            11 : AccordingToDescription<br/>
+                                            12 : Incomplete<br/>
+                                            13 : Unknown<br/>
+          format: int32
+          nullable: true
+        startDate:
+          type: string
+          description: The date from when the offer is automatically activated
+          format: date
+          nullable: true
+          example: '2022-08-24'
+        endDate:
+          type: string
+          description: The date after which the offer is automatically deactivated
+          format: date
+          nullable: true
+          example: '2030-08-24'
+        attributes:
+          type: object
+          additionalProperties:
+            type: object
+          description: Custom attributes are defined by user
+        reducedPrice:
+          $ref: '#/components/schemas/reducedPrice'
+        repricerInfo:
+          $ref: '#/components/schemas/repricerInfo'
+        additionalDeliveryTimes:
+          type: array
+          items:
+            $ref: '#/components/schemas/deliveryTime'
+          description: Additional delivery times
+          nullable: true
+    offerDetailDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The generated by Qilin when creating a new offer.
+          format: uuid
+        channelOffers:
+          type: array
+          items:
+            $ref: '#/components/schemas/channelOfferDetailDto'
+          description: A list full of store specific offers for the referenced product.
+        updatedDate:
+          type: string
+          description: The latest update time of this offer.
+          format: date-time
+        productOrVariationId:
+          type: string
+          description: Reference to the UUID of a product or variation created via API.
+          format: uuid
+    pagination:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+          format: int32
+          example: 2
+        pageIndex:
+          type: integer
+          format: int32
+          example: 10
+        totalItem:
+          type: integer
+          format: int32
+          example: 25
+        self:
+          type: string
+          example: https://api.qilin.cloud/attributes?pageIndex=2&pageSize=10
+        first:
+          type: string
+          example: https://api.qilin.cloud/attributes?pageIndex=1&pageSize=10
+        prev:
+          type: string
+          example: https://api.qilin.cloud/attributes?pageIndex=1&pageSize=10
+        next:
+          type: string
+          example: https://api.qilin.cloud/attributes?pageIndex=3&pageSize=10
+        last:
+          type: string
+          example: https://api.qilin.cloud/attributes?pageIndex=3&pageSize=10
+    successResponse_offerDetailDto[]:
+      type: object
+      properties:
+        body:
+          type: array
+          items:
+            $ref: '#/components/schemas/offerDetailDto'
+        id:
+          type: string
+        message:
+          type: string
+        resultTime:
+          type: string
+          format: date-time
+        pagination:
+          $ref: '#/components/schemas/pagination'
+    list_object:
+      type: array
+      items:
+        type: object
+    qilinError:
+      type: object
+      properties:
+        errorCode:
+          enum:
+            - 5010
+            - 5020
+            - 5030
+            - 5040
+            - 6010
+            - 7000
+            - 7010
+            - 7020
+            - 7030
+            - 7040
+            - 7050
+            - 7060
+            - 7070
+            - 7080
+            - 7090
+            - 7100
+            - 7110
+            - 7120
+            - 7130
+            - 7140
+            - 7150
+            - 7160
+            - 7170
+            - 7180
+            - 7190
+            - 7200
+            - 7210
+            - 7220
+            - 7230
+            - 8000
+            - 8001
+            - 8002
+            - 8010
+            - 8011
+            - 8012
+            - 8013
+            - 8014
+            - 8015
+            - 8016
+            - 8017
+            - 8018
+            - 8030
+            - 8031
+            - 8032
+            - 8033
+            - 8034
+            - 8035
+            - 8036
+            - 8037
+            - 8060
+            - 8061
+            - 8062
+            - 9000
+            - 9001
+            - 9002
+            - 9003
+            - 9004
+            - 9005
+            - 9006
+            - 9007
+            - 9008
+            - 9009
+            - 9010
+            - 9011
+            - 9012
+            - 9013
+            - 9020
+            - 9030
+            - 9040
+            - 9041
+            - 9050
+            - 9060
+            - 9070
+            - 9071
+            - 9072
+            - 9073
+            - 9075
+            - 9076
+            - 9077
+            - 9078
+            - 9079
+            - 9080
+            - 9081
+            - 9082
+            - 9083
+            - 9084
+            - 9085
+            - 9086
+            - 9087
+            - 9088
+            - 9089
+            - 9090
+            - 9091
+            - 9092
+            - 9101
+            - 9102
+            - 9103
+            - 9104
+            - 9105
+            - 9106
+            - 9107
+            - 9108
+            - 9109
+            - 9110
+            - 9111
+            - 9112
+            - 9113
+            - 9114
+            - 9115
+            - 9116
+            - 9201
+            - 9202
+            - 9203
+            - 9204
+            - 9301
+            - 9302
+            - 9303
+            - 9304
+            - 9305
+            - 9306
+            - 9307
+            - 9308
+            - 9309
+            - 9310
+            - 9311
+            - 9312
+            - 9313
+            - 9314
+            - 9315
+            - 9316
+            - 9317
+            - 9318
+            - 9319
+            - 10000
+            - 10001
+            - 10003
+            - 10004
+            - 10005
+            - 10006
+            - 10007
+            - 10008
+            - 10009
+            - 10011
+            - 10012
+            - 10013
+            - 10014
+            - 10015
+            - 10020
+            - 10021
+            - 10023
+            - 10024
+            - 10025
+            - 10026
+            - 10027
+            - 10028
+            - 10029
+            - 10030
+            - 10031
+            - 10032
+            - 10033
+            - 10034
+            - 10035
+            - 10036
+            - 10037
+            - 10038
+            - 10039
+            - 10043
+            - 10044
+            - 10045
+            - 10046
+            - 10047
+            - 10048
+            - 10049
+            - 10050
+            - 10051
+            - 10052
+            - 10053
+            - 10054
+            - 10055
+            - 10056
+            - 10057
+            - 10058
+            - 10059
+            - 10070
+            - 10071
+            - 10072
+            - 10073
+            - 10074
+            - 10075
+            - 10076
+            - 10077
+            - 10078
+            - 10079
+            - 30000
+            - 30001
+            - 30002
+            - 30003
+            - 30004
+            - 30005
+            - 30020
+            - 30040
+            - 30060
+            - 30100
+            - 30120
+            - 30121
+            - 30122
+            - 50000
+            - 50001
+            - 50002
+            - 70000
+            - 70001
+            - 70002
+            - 70003
+            - 70004
+            - 70010
+            - 70011
+            - 70012
+            - 70013
+            - 70014
+            - 70015
+            - 70016
+            - 70017
+            - 70018
+            - 70019
+            - 70020
+            - 70021
+            - 70022
+            - 70023
+            - 70024
+            - 70025
+            - 70026
+            - 70027
+            - 70028
+            - 70029
+            - 70030
+            - 70031
+            - 70032
+            - 70033
+            - 70034
+            - 70035
+            - 70036
+            - 70037
+            - 70038
+            - 70039
+            - 70040
+            - 70041
+            - 70042
+            - 70043
+            - 70044
+            - 70045
+            - 70050
+            - 70051
+            - 70052
+            - 70100
+            - 70101
+            - 70102
+            - 70103
+            - 70104
+            - 70105
+            - 70106
+            - 70120
+            - 90000
+            - 90001
+            - 100040
+            - 100041
+            - 100042
+          type: integer
+          format: int32
+          default: 5010
+        shortDescription:
+          type: string
+        description:
+          type: string
+        moreInformationUrl:
+          type: string
+          format: uri
+        referenceTo:
+          type: string
+        errorType:
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+            - 13
+          type: integer
+          format: int32
+          default: 0
+        additionalInformation:
+          type: string
+        options:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/list_object'
+    badRequestExceptionModel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/qilinError'
+        creationTime:
+          type: string
+          format: date-time
+          example: '2022-08-24T14:15:22Z'
+        correlationId:
+          type: string
+          format: uuid
+        requestAPI:
+          type: string
+          example: /api/offers
+        requestHttpVerb:
+          type: string
+          example: POST
+        requestParameters:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/list_object'
+          example:
+            pageSize: abc
+        requestBody:
+          type: string
+          example: '{\r\n    \"title\": {\r\n        \"en-U\": \"title 4\"\r\n    },\r\n    \"flexibleAttributes\": {\r\n        \"6d7ff190-5803-460e-9ee4-bb723d6aef04\": [\r\n            \"04-08-2022\"\r\n        ]\r\n    }\r\n}'
+    channelOfferDto:
+      type: object
+      properties:
+        channelId:
+          type: string
+          description: Reference to the ID of the channel for which this offer should apply. ChannelID = 0 means "general" and is always used as fallback if a channel has no specific ChannelOffer information.
+          format: uuid
+        isActive:
+          type: boolean
+          description: Indicates whether the offer is currently active for this channel.
+        price:
+          $ref: '#/components/schemas/money'
+        taxGroup:
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+          type: integer
+          description: |-
+            The tax group mapping with country<br/>
+                                            Value:<br/>
+                                            0: Normal<br/>
+                                            1: Reduced<br/>
+                                            2: Taxfree<br/>
+                                            3: Regular<br/>
+                                            4: Unknown
+          format: int32
+        stocks:
+          type: array
+          items:
+            $ref: '#/components/schemas/stockInfo'
+          description: The available stock
+        defaultDeliveryTime:
+          $ref: '#/components/schemas/deliveryTime'
+        condition:
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+            - 13
+          type: integer
+          description: |-
+            The condition of a product.<br/>
+                                            Value:<br/>
+                                            0 : New<br/>
+                                            1 : AsNew<br/>
+                                            2 : VeryGood<br/>
+                                            3 : Good<br/>
+                                            4 : Acceptable<br/>
+                                            5 : Antique<br/>
+                                            6 : Broken<br/>
+                                            7 : Refurbished<br/>
+                                            8 : BStock<br/>
+                                            9 : DamagedPackaging<br/>
+                                            10 : Demo<br/>
+                                            11 : AccordingToDescription<br/>
+                                            12 : Incomplete<br/>
+                                            13 : Unknown<br/>
+          format: int32
+          nullable: true
+        startDate:
+          type: string
+          description: The date from when the offer is automatically activated
+          format: date
+          nullable: true
+          example: '2022-08-24'
+        endDate:
+          type: string
+          description: The date after which the offer is automatically deactivated
+          format: date
+          nullable: true
+          example: '2030-08-24'
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+          description: Custom attributes are defined by user
+        reducedPrice:
+          $ref: '#/components/schemas/reducedPrice'
+        repricerInfo:
+          $ref: '#/components/schemas/repricerInfo'
+        additionalDeliveryTimes:
+          type: array
+          items:
+            $ref: '#/components/schemas/deliveryTime'
+          description: Additional delivery times
+          nullable: true
+      required:
+        - channelId
+        - isActive
+        - price
+        - taxGroup
+        - stocks
+        - defaultDeliveryTime
+      x-tags:
+        - OfferRequest
+    offerDto:
+      type: object
+      properties:
+        channelOffers:
+          type: array
+          items:
+            $ref: '#/components/schemas/channelOfferDto'
+          description: A list full of store specific offers for the referenced product.
+        productOrVariationId:
+          type: string
+          description: Reference to the UUID of a product or variation created via API.
+          format: uuid
+      required:
+        - channelOffers
+        - productOrVariationId
+    successResponse_offerDetailDto:
+      type: object
+      properties:
+        body:
+          $ref: '#/components/schemas/offerDetailDto'
+        id:
+          type: string
+          format: uuid
+        message:
+          type: string
+          example: Created successfully.
+        resultTime:
+          type: string
+          format: date-time
+          example: '2022-08-24T14:15:22Z'
+        pagination:
+          $ref: '#/components/schemas/pagination'
+    successResponse_object:
+      type: object
+      properties:
+        id:
+          type: string
+        message:
+          type: string
+        resultTime:
+          type: string
+          format: date-time
+        body:
+          type: object
+        pagination:
+          $ref: '#/components/schemas/pagination'
+    basicInfoProductDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The generated by Qilin when creating a new product.
+        title:
+          type: object
+          additionalProperties:
+            type: string
+          description: The title of the product
+      description: The basic info of product
+    basicInfoStockDto:
+      type: object
+      properties:
+        stock:
+          type: integer
+          description: The available stock in this warehouse
+          format: int32
+          nullable: true
+        warehouseId:
+          type: string
+          description: The reference to a warehouse where this stock is managed (stored)
+          nullable: true
+        gld:
+          $ref: '#/components/schemas/money'
+        reservedStock:
+          type: number
+          description: The reserved stock
+          format: float
+          nullable: true
+        inflowStock:
+          type: number
+          description: The stock that is currently in the supply
+          format: float
+          nullable: true
+        transhippingRate:
+          type: number
+          description: The inventory turnover rate
+          format: float
+          nullable: true
+    basicInfoDeviveryTimeDto:
+      type: object
+      properties:
+        name:
+          type: object
+          additionalProperties:
+            type: string
+          description: The name for this delivery time
+        processingTimeFrom:
+          type: integer
+          description: The minimum duration in days that the retailer needs internally after receiving the order until he hands over the shipment to the carrier.
+          format: int32
+          nullable: true
+        processingTimeTill:
+          type: integer
+          description: The maximum duration in days that the retailer needs internally after receiving the order until he hands over the shipment to the carrier.
+          format: int32
+          nullable: true
+        shippingTimeFrom:
+          type: integer
+          description: The minimum duration in days that the Carrier needs for delivery (minimum duration between handover of the package to the Carrier and the first delivery attempt to the buyer).
+          format: int32
+          nullable: true
+        shippingTimeTill:
+          type: integer
+          description: The maximum duration in days that the Carrier needs for delivery (maximum duration between handover of the package to the Carrier and the first delivery attempt to the buyer).
+          format: int32
+          nullable: true
+        deliveryWeekdays:
+          type: array
+          items:
+            enum:
+              - 0
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+            type: integer
+            format: int32
+            default: 0
+          description: |-
+            A list of days of the week on which the Carrier generally delivers.<br/>
+                                            Value:<br/>
+                                            0: Sunday<br/>
+                                            1: Monday<br/>
+                                            2: Tuesday<br/>
+                                            3: Wednesday<br/>
+                                            4: Thursday<br/>
+                                            5: Friday<br/>
+                                            6: Saturday
+          nullable: true
+        priceChange:
+          $ref: '#/components/schemas/money'
+      description: Delivery time
+    basicInfoChannelOfferDto:
+      type: object
+      properties:
+        channelId:
+          type: string
+          description: Reference to the ID of the channel for which this offer should apply.
+          format: uuid
+        isActive:
+          type: boolean
+          description: Indicates whether the offer is currently active for this channel
+        price:
+          $ref: '#/components/schemas/money'
+        stocks:
+          type: array
+          items:
+            $ref: '#/components/schemas/basicInfoStockDto'
+          description: Stock info
+        defaultDeliveryTime:
+          $ref: '#/components/schemas/basicInfoDeviveryTimeDto'
+        updatedDate:
+          type: string
+          description: Updated date
+          format: date-time
+    headBasicInfoOfferDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The generated by Qilin when creating a new offer.
+        productOrVariationId:
+          type: string
+          description: Reference to the UUID of a product or variation created via API.
+          format: uuid
+        productOrVariation:
+          $ref: '#/components/schemas/basicInfoProductDto'
+        channelOffers:
+          type: array
+          items:
+            $ref: '#/components/schemas/basicInfoChannelOfferDto'
+          description: A list of channel offers
+    successResponse_headBasicInfoOfferDto:
+      type: object
+      properties:
+        id:
+          type: string
+        message:
+          type: string
+        resultTime:
+          type: string
+          format: date-time
+        body:
+          $ref: '#/components/schemas/headBasicInfoOfferDto'
+        pagination:
+          $ref: '#/components/schemas/pagination'
+    noteDetailDto:
+      type: object
+      properties:
+        noteTypeText:
+          type: string
+          description: The type of the note.
+          nullable: true
+        createdDate:
+          type: string
+          description: The date when this annotation was created.
+          format: date-time
+          nullable: true
+        content:
+          type: object
+          additionalProperties:
+            type: string
+          description: The content of the note.
+        noteType:
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+            - 13
+          type: integer
+          description: The type of the note.
+          format: int32
+          nullable: true
+    addressDetailDto:
+      type: object
+      properties:
+        addressTypeName:
+          type: string
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/noteDetailDto'
+          description: Notes about this address.
+          nullable: true
+        street:
+          type: string
+        houseNumber:
+          type: string
+        building:
+          type: string
+        level:
+          type: string
+        room:
+          type: string
+        additionalAddressInformation:
+          type: string
+          description: Further address additional information
+          nullable: true
+        entryCode:
+          type: string
+        zip:
+          type: string
+        city:
+          type: string
+        district:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+          description: Country in ISO 3166 ALPHA 3 format
+          nullable: true
+        addressType:
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+          type: integer
+          description: |-
+            Value<br/>
+                                0 : MerchantAddress<br/>
+                                1 : InvoiceAddress<br/>
+                                2 : DeliveryAddress<br/>
+                                3 : PickupAddress<br/>
+                                4 : FulfillerAddress<br/>
+                                5 : ProductAddress<br/>
+                                6 : BrandAddress<br/>
+                                7 : ManufacturerAddress<br/>
+                                8 : WarehouseAddress<br/>
+                                9 : CustomerAddress<br/>
+                                10 : RetourAddress<br/>
+                                11 : VendorAddress<br/>
+                                12 : Other<br/>
+          format: int32
+        chanelId:
+          type: string
+          description: Reference to the ID of the customer used by the marketplace itself for API actions
+          nullable: true
+        erpId:
+          type: string
+          description: Reference to the ID of the ERP system that the retailer uses.
+          nullable: true
+        options:
+          type: object
+          additionalProperties:
+            type: object
+          description: A list of additional options to this address
+      description: The address of the warehouse
+    warehouseDetailDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The generated by Qilin when creating a new warehouse.
+        address:
+          $ref: '#/components/schemas/addressDetailDto'
+        updatedDate:
+          type: string
+          description: The latest update time of this offer.
+          format: date-time
+        name:
+          type: object
+          additionalProperties:
+            type: string
+          description: The name of the warehouse
+        isExternalFulfillment:
+          type: boolean
+          description: If the warehouse is an external fulfiller
+    successResponse_warehouseDetailDto[]:
+      type: object
+      properties:
+        body:
+          type: array
+          items:
+            $ref: '#/components/schemas/warehouseDetailDto'
+        id:
+          type: string
+        message:
+          type: string
+        resultTime:
+          type: string
+          format: date-time
+        pagination:
+          $ref: '#/components/schemas/pagination'
+    noteDto:
+      type: object
+      properties:
+        content:
+          type: object
+          additionalProperties:
+            type: string
+          description: The content of the note.
+        noteType:
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+            - 13
+          type: integer
+          description: The type of the note.
+          format: int32
+          nullable: true
+    addressDto:
+      type: object
+      properties:
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/noteDto'
+          description: Notes about this address.
+          nullable: true
+        street:
+          type: string
+        houseNumber:
+          type: string
+        building:
+          type: string
+        level:
+          type: string
+        room:
+          type: string
+        additionalAddressInformation:
+          type: string
+          description: Further address additional information
+          nullable: true
+        entryCode:
+          type: string
+        zip:
+          type: string
+        city:
+          type: string
+        district:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+          description: Country in ISO 3166 ALPHA 3 format
+          nullable: true
+        addressType:
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+          type: integer
+          description: |-
+            Value<br/>
+                                0 : MerchantAddress<br/>
+                                1 : InvoiceAddress<br/>
+                                2 : DeliveryAddress<br/>
+                                3 : PickupAddress<br/>
+                                4 : FulfillerAddress<br/>
+                                5 : ProductAddress<br/>
+                                6 : BrandAddress<br/>
+                                7 : ManufacturerAddress<br/>
+                                8 : WarehouseAddress<br/>
+                                9 : CustomerAddress<br/>
+                                10 : RetourAddress<br/>
+                                11 : VendorAddress<br/>
+                                12 : Other<br/>
+          format: int32
+        chanelId:
+          type: string
+          description: Reference to the ID of the customer used by the marketplace itself for API actions
+          nullable: true
+        erpId:
+          type: string
+          description: Reference to the ID of the ERP system that the retailer uses.
+          nullable: true
+        options:
+          type: object
+          additionalProperties:
+            type: object
+          description: A list of additional options to this address
+      description: The address of the warehouse
+      required:
+        - street
+        - zip
+        - city
+        - country
+    warehouseDto:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/addressDto'
+        name:
+          type: object
+          additionalProperties:
+            type: string
+          description: The name of the warehouse
+        isExternalFulfillment:
+          type: boolean
+          description: If the warehouse is an external fulfiller
+      required:
+        - address
+        - name
+        - isExternalFulfillment
+    successResponse_warehouseDetailDto:
+      type: object
+      properties:
+        body:
+          $ref: '#/components/schemas/warehouseDetailDto'
+        id:
+          type: string
+        message:
+          type: string
+        resultTime:
+          type: string
+          format: date-time
+        pagination:
+          $ref: '#/components/schemas/pagination'
+    patchUpdateDto:
+      required:
+        - op
+        - path
+        - value
+      type: object
+      properties:
+        op:
+          minLength: 1
+          type: string
+          description: The patch operations supported by JSON Patch are add, remove, replace, move, copy and test
+        path:
+          minLength: 1
+          type: string
+          description: Path to the Op object
+        value:
+          minLength: 1
+          type: string
+          description: Value of Op object
+security:
+  - bearer: []
+  - api_key: []
