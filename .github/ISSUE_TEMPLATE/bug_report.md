@@ -10,6 +10,10 @@ assignees: ''
 **Is there an existing issue for this?**
 - [ ] I have searched the existing issues
 
+
+**Endpoint / method**
+_For example: [Delete] /warehouse/{id}_
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
