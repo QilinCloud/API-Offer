@@ -1,0 +1,65 @@
+title: "[Bug] "
+labels: ["General Introduction"]
+body:
+  - type: checkboxes
+    attributes:
+      label: Is there an existing issue for this?
+      options:
+        - label: I have searched the existing issues, there is no existing issue.
+          required: true
+          
+  - type: dropdown
+    id: type
+    attributes:
+      label: Which type is this thread about?
+      options:
+        - Bug
+        - Feature Request
+        - Outdated Information
+        - Missing Information
+        - Typo
+        - Other
+    validations:
+      required: true
+      
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe it
+      description: "What is this thread about?"
+      render: bash
+    validations:
+      required: true
+      
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: "Be as detailled as possible."
+      render: bash
+    validations:
+      required: no    
+  
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: "What is the result you expect?"
+      render: bash
+    validations:
+      required: no
+      
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: "Write everything that helps us to understand the circumstances"
+      render: bash
+    validations:
+      required: no
+      
+  - type: markdown
+    attributes:
+      value: |
+        ## :bulb: Screenshots
+        Screenshots and Pictures can be addet in the first comment, after creating the new thread.
