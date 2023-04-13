@@ -10,6 +10,9 @@ assignees: ''
 **Is there an existing issue for this?**
 - [ ] I have searched the existing issues
 
+**Endpoint / method**
+_For example: [Delete] /warehouse/{id}_
+
 **Is your feature request related to a problem? Please describe.**
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
