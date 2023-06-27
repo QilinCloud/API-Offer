@@ -16,11 +16,20 @@ The current API version is: **1.0.2**
 ## Code Quality
 
 We use a variety of state-of-the-art techniques to ensure that our code meets the highest quality criteria.
-If you still notice something bad, we are happy to have a strong community to solve the problem together with you: [How to provide feedback](https://github.com/QilinCloud/API-Offer/#how-to-provide-feedback)
+Some examples are:
+
+- [SOLID principle](https://en.wikipedia.org/wiki/SOLID)
+- [Clean as you code:tm: approach](https://www.sonarsource.com/solutions/our-unique-approach/)
+- 4-eyes approval on QC
+- Semiautomated Unit-, Integration- and End2End-tests
+- positive tests / negative tests / destructive tests in aware of false positive results / false negative results
+- Sonarcloud
 
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=marcossoftware_Qilin.Core.Offer&token=db2775f834732361879144a856d3bb9e328a3b22)](https://sonarcloud.io/summary/new_code?id=marcossoftware_Qilin.Core.Offer)
 
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=marcossoftware_Qilin.Core.Offer&metric=vulnerabilities&token=db2775f834732361879144a856d3bb9e328a3b22)](https://sonarcloud.io/summary/new_code?id=marcossoftware_Qilin.Core.Offer) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=marcossoftware_Qilin.Core.Offer&metric=security_rating&token=db2775f834732361879144a856d3bb9e328a3b22)](https://sonarcloud.io/summary/new_code?id=marcossoftware_Qilin.Core.Offer) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=marcossoftware_Qilin.Core.Offer&metric=coverage&token=db2775f834732361879144a856d3bb9e328a3b22)](https://sonarcloud.io/summary/new_code?id=marcossoftware_Qilin.Core.Offer) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=marcossoftware_Qilin.Core.Offer&metric=bugs&token=db2775f834732361879144a856d3bb9e328a3b22)](https://sonarcloud.io/summary/new_code?id=marcossoftware_Qilin.Core.Offer)
+
+💡 _If you still notice something bad, we are happy to have a strong community to solve the problem together with you: [How to provide feedback](https://github.com/QilinCloud/API-Offer/#how-to-provide-feedback)_
 
 ## Useful links to get started
 
