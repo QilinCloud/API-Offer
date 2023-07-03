@@ -25,6 +25,8 @@ Some examples are:
 - positive tests / negative tests / destructive tests in aware of false positive results / false negative results
 - Sonarcloud
 
+Read more about our code quality approach in our wiki: [Code Quality](https://github.com/QilinCloud/QilinCloud/wiki/Code-quality).
+
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=marcossoftware_Qilin.Core.Offer&token=db2775f834732361879144a856d3bb9e328a3b22)](https://sonarcloud.io/summary/new_code?id=marcossoftware_Qilin.Core.Offer)
 
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=marcossoftware_Qilin.Core.Offer&metric=vulnerabilities&token=db2775f834732361879144a856d3bb9e328a3b22)](https://sonarcloud.io/summary/new_code?id=marcossoftware_Qilin.Core.Offer) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=marcossoftware_Qilin.Core.Offer&metric=security_rating&token=db2775f834732361879144a856d3bb9e328a3b22)](https://sonarcloud.io/summary/new_code?id=marcossoftware_Qilin.Core.Offer) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=marcossoftware_Qilin.Core.Offer&metric=coverage&token=db2775f834732361879144a856d3bb9e328a3b22)](https://sonarcloud.io/summary/new_code?id=marcossoftware_Qilin.Core.Offer) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=marcossoftware_Qilin.Core.Offer&metric=bugs&token=db2775f834732361879144a856d3bb9e328a3b22)](https://sonarcloud.io/summary/new_code?id=marcossoftware_Qilin.Core.Offer)
